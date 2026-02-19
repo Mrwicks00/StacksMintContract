@@ -16,6 +16,7 @@ epoch = 'latest'
 path = 'contracts/token-template.clar'
 clarity_version = 4
 epoch = 'latest'
+
 [repl.analysis]
 passes = [
     'check_checker',
