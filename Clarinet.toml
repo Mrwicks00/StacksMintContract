@@ -1,0 +1,37 @@
+[project]
+name = 'StacksMintContract'
+description = ''
+authors = []
+telemetry = true
+cache_dir = './.cache'
+requirements = [
+  { contract_id = 'SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE.sip-010-trait-ft-standard' }
+]
+[contracts.stacksmint]
+path = 'contracts/stacksmint.clar'
+clarity_version = 4
+epoch = 'latest'
+
+[contracts.token-template]
+path = 'contracts/token-template.clar'
+clarity_version = 4
+epoch = 'latest'
+[repl.analysis]
+passes = [
+    'check_checker',
+    'call_checker',
+]
+
+[repl.analysis.lint_groups]
+
+[repl.analysis.lints]
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
+
+[repl.remote_data]
+enabled = false
+api_url = 'https://api.hiro.so'
