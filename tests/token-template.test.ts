@@ -205,7 +205,7 @@ describe("mint", () => {
             [Cl.uint(5_000_000), Cl.principal(wallet1)],
             deployer
         );
-        expect(result).toBeOk(Cl.uint(5_000_000));
+        expect(result).toBeOk(Cl.bool(true));
         expect(getBalance(wallet1)).toBeOk(Cl.uint(5_000_000));
     });
 
@@ -260,7 +260,7 @@ describe("burn", () => {
             [Cl.uint(5_000), Cl.principal(wallet1)],
             wallet1
         );
-        expect(result).toBeOk(Cl.uint(5_000));
+        expect(result).toBeOk(Cl.bool(true));
         expect(getBalance(wallet1)).toBeOk(Cl.uint(5_000));
     });
 
