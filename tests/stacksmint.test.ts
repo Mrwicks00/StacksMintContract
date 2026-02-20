@@ -58,9 +58,9 @@ describe("initial state", () => {
         expect(result).toBeOk(Cl.uint(0));
     });
 
-    it("registration fee is 1 STX (1,000,000 micro-STX)", () => {
+    it("registration is free (fee is 0)", () => {
         const { result } = simnet.callReadOnlyFn(CONTRACT, "get-registration-fee", [], deployer);
-        expect(result).toBeOk(Cl.uint(1_000_000));
+        expect(result).toBeOk(Cl.uint(0));
     });
 
     it("total-fees-collected starts at zero", () => {
@@ -90,7 +90,7 @@ describe("initial state", () => {
             [Cl.principal(wallet1)],
             deployer
         );
-        expect(result).toBeTuple({});  // default-to (list) returns an empty list
+        expect(result).toBeList([]);  // default-to (list) returns an empty list
     });
 });
 
@@ -165,10 +165,10 @@ describe("register-token — happy path", () => {
         expect(count).toBeOk(Cl.uint(2));
     });
 
-    it("registration fee is collected (total-fees-collected increases)", () => {
+    it("total-fees-collected stays at zero (registration is free)", () => {
         registerToken(wallet1, fakeToken1);
         const { result } = simnet.callReadOnlyFn(CONTRACT, "get-total-fees-collected", [], deployer);
-        expect(result).toBeOk(Cl.uint(Number(REGISTRATION_FEE)));
+        expect(result).toBeOk(Cl.uint(0));
     });
 
     it("token with optional URI stores it correctly", () => {
